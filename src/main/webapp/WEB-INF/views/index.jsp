@@ -22,7 +22,7 @@
             </header>
 
             <div class="page_container">
-                hi
+                hi mainpage 001 why
                 <c:set var="t" value="hello" />
 
 
