@@ -23,6 +23,8 @@
 
             <div class="page_container">
                 hi
+                <c:set var="t" value="hello" />
+
 
             </div>
 
