@@ -8,7 +8,7 @@ public interface ReviewService {
     
     public int saveReview(ReviewDto dto);
     public List<ReviewDto> getReviewList(String userId);
-
+    public ReviewDto selectReview(int reviewNo);
 
 
 

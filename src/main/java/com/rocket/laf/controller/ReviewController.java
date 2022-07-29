@@ -62,21 +62,10 @@ public class ReviewController {
             System.out.println("로그인한 사용자 아이디_________ " +  userInfo.getUsername());
             String userId = userInfo.getUsername();
             List<ReviewDto> reviewListReturned = reviewService.getReviewList(userId);
-            System.out.println(reviewListReturned);
             model.addAttribute("reviewList", reviewListReturned);
 
             return "/review/reviewList";
         }
-
-
-       
-        //넘겨받은 아이디 값기준으로 서비스로 매퍼실행해서 리스트 제네릭 타입으로 받아온다.
-        //리스트 모델에 저장해 뷰로 전달한다.
-        //뷰에서는 C for문사용해서 뿌려준다. (뷰에서 후기번호 보여줄때는 숫자 1부터 증가해서 보여준다
-        //실제번호는 히든처리한다)
-
-        //String loginId = request.getParameter("view에서 보내는 id 네임값");
-
     }
 
     //27일 완료
@@ -99,8 +88,13 @@ public class ReviewController {
 
     //29일 시작
     @GetMapping(value="details")
-    public String reviewDetails(int reviewNo) {
-        //클릭하면 후기번호를 기준으로 찾아오는것으로 하자
+    public String reviewDetails(int reviewNo, HttpServletRequest request, Model model) {
+        logger.info("logger _______________ mapped to review/details");
+        reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
+        ReviewDto reviewDetail = reviewService.selectReview(reviewNo);
+        model.addAttribute("reviewDetail", reviewDetail);
+
+        System.out.println("review details __________ " + reviewDetail);
 
         return "/review/reviewDetail";
     }

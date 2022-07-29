@@ -22,8 +22,12 @@ public class ReviewServiceImpl implements ReviewService{
 
     @Override
     public List<ReviewDto> getReviewList(String userId) {
-        // TODO Auto-generated method stub
         return reviewMapper.getReviewList(userId);
+    }
+
+    @Override
+    public ReviewDto selectReview(int reviewNo) {
+        return reviewMapper.selectReview(reviewNo);
     }
     
 }

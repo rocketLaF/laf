@@ -17,4 +17,7 @@ public interface ReviewMapper {
     @Select( "select * from Review where rUserId=#{userId} ")
     List<ReviewDto> getReviewList(String userId);
 
+    @Select ( "select * from Review where reviewNo=#{reviewNo}" )
+    ReviewDto selectReview(int reviewNo);
+
 }
