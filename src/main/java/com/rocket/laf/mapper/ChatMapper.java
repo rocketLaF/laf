@@ -36,4 +36,10 @@ public interface ChatMapper {
     @Select(" SELECT userNo, boardNo")
     UserDto getUserInfoByRoomId(long roomId);
 //    @Update(" UPDATE ")
+
+    @Select(" SELECT content FROM Message WHERE roomId = #{roomId} ")
+    String getChatHistory(long roomId);
+
+    @Update(" UPDATE Message SET content = #{content} WHERE roomId = #{roomId} ")
+    void saveChatHist(String content, long roomId);
 }

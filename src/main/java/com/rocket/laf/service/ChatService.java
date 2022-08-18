@@ -3,6 +3,7 @@ package com.rocket.laf.service;
 import com.rocket.laf.dto.MessageRoom;
 import com.rocket.laf.dto.UserDto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface ChatService {
@@ -21,4 +22,8 @@ public interface ChatService {
     MessageRoom getRoomByRoomId(long roomId);
 
     UserDto getUserInfoByRoomId(long roomId);
+
+    String getChatHistory(long roomId);
+
+    void saveChatHist(String content, long roomId);
 }

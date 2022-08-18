@@ -57,4 +57,14 @@ public class ChatServiceImpl implements ChatService {
     public UserDto getUserInfoByRoomId(long roomId) {
         return chatMapper.getUserInfoByRoomId(roomId);
     }
+
+    @Override
+    public String getChatHistory(long roomId) {
+        return chatMapper.getChatHistory(roomId);
+    }
+
+    @Override
+    public void saveChatHist(String content, long roomId) {
+        chatMapper.saveChatHist(content, roomId);
+    }
 }

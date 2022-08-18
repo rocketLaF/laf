@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -29,8 +31,13 @@ public class MsgRoomController {
     public ModelAndView roomEnter(@PathVariable String roomId, Authentication authentication) {
         ModelAndView mv = new ModelAndView();
         String accessUser = authentication.getName();
+        long roomId4Chat = Long.parseLong(roomId);
+        String chatHistory = chatService.getChatHistory(roomId4Chat);
+//        String[] stepChatHistArray = chatHistory.split()
+//        ArrayList<String> chatHistArrayList = new ArrayList<String>(Arrays.asList(stepChatHisArray));
         String url = "redirect://localhost:3000/?roomId="+roomId+"&&userName="+accessUser;
         mv.setViewName(url);
+//        mv.addObject("chatHist", chatHistArrayList);
         return mv;
     }
 
@@ -54,6 +61,7 @@ public class MsgRoomController {
         model.addAttribute("roomList", messageRooms);
         return "/chat/roomList";
     }
+
 
 //    @ResponseBody
 //    @GetMapping("/room/{roomId}/{boardNo}/{accessUserName}")
