@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.List;
 
 
 @RestController
@@ -35,10 +36,11 @@ public class MsgController {
     }
 
     @PostMapping("/chat/ext/{roomId}")
-    public void saveChatHist(@PathVariable String roomId, HttpServletRequest request) {
+    public void saveChatHist(@PathVariable String roomId, @RequestBody List<Message> messageList) {
         long long_roomId = Long.parseLong(roomId);
-        String[] chatHist = request.getParameterValues("chatHist");
-        String chatHist4Save = chatHist.toString();
-        chatServiceImpl.saveChatHist(chatHist4Save, long_roomId);
+        System.out.println(messageList);
+//        String[] chatHist = request.getParameterValues("chatHist");
+//        String chatHist4Save = chatHist.toString();
+//        chatServiceImpl.saveChatHist(chatHist4Save, long_roomId);
     }
 }

@@ -9,5 +9,6 @@ public class Message {
 
     private String username;
     private String content;
+    private String roomId;
     private String chattime;
 }
